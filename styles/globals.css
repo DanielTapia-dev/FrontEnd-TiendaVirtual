@@ -4,6 +4,47 @@
 
 @import "./index.css";
 
+@layer base {
+  @font-face {
+    font-family: "WebSymbolsRegular";
+    src: url("./fonts/websymbols-regular-webfont.eot");
+    src: url("./fonts/websymbols-regular-webfont.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/websymbols-regular-webfont.woff") format("woff"),
+      url("./fonts/websymbols-regular-webfont.ttf") format("truetype"),
+      url("./fonts/websymbols-regular-webfont.svg#WebSymbolsRegular")
+        format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "TrebuchetMS";
+    src: url("./fonts/TrebuchetMS.ttf");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "BebasNeue";
+    src: url("./fonts/BebasNeue.otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .symbol {
+    font-family: "WebSymbolsRegular";
+  }
+
+  .bebas {
+    font-family: "BebasNeue";
+  }
+
+  .trebuchet {
+    font-family: "TrebuchetMS";
+  }
+}
+
 html,
 body {
   padding: 0;
@@ -19,4 +60,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.button-basic {
+  @apply transition duration-300 transform hover:scale-105 bg-red-500 text-white p-1 mx-1 rounded text-xl font-bold overflow-visible;
 }

@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "formik": "^2.2.9",
+    "jwt-decode": "^3.1.2",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sweetalert2": "^11.0.20",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/react": "17.0.15",
@@ -19,6 +23,7 @@
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "postcss": "^8.3.6",
+    "react-query": "^3.19.1",
     "tailwindcss": "^2.2.7",
     "typescript": "4.3.5"
   }

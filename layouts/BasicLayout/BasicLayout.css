@@ -1,3 +1,6 @@
 .basic-layout {
-  @apply mx-10;
+}
+
+.add-btn {
+  @apply flex flex-row justify-center bg-green-600 p-2 rounded-lg cursor-pointer;
 }

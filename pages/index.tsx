@@ -1,9 +1,11 @@
 import BasicLayout from "../layouts/BasicLayout";
+import React from 'react';
 
 export default function Home() {
+
   return (
-    <BasicLayout>
-      <h1>Estamos en home</h1>
-    </BasicLayout>
+    <BasicLayout></BasicLayout>
   )
 }
+
+
