@@ -1,6 +1,6 @@
 export async function getHistoriales(id: String) {
     try {
-        const url = `https://app-node-nextjs.herokuapp.com/api/historiales/${id}`;
+        const url = `${process.env.KEY}/api/historiales/${id}`;
         const params = {
             method: 'GET',
             headers: {

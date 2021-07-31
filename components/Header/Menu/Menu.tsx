@@ -23,7 +23,7 @@ function MenuOptions() {
 
     useEffect(() => {
         (async () => {
-            const response = await getMeApi(logout);
+            const response = await getMeApi();
             setUser(response);
         })()
     }, [])

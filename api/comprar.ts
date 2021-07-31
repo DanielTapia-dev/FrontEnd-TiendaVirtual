@@ -1,40 +1,42 @@
 import { getToken } from './token';
 import Swal from 'sweetalert2';
-export async function addCarrito(producto: any) {
-    console.log(producto)
+import Router from 'next/router';
+export async function addCompra(compra: any) {
+    console.log(compra)
     try {
         const token: any = getToken();
-        const url = `${process.env.KEY}/api/carrito`;
+        const url = `${process.env.KEY}/api/compra`;
         const params = {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 token: token
             },
-            body: JSON.stringify(producto)
+            body: JSON.stringify(compra)
         };
         const response = await fetch(url, params);
         const result = await response.json();
         if (result.ok == true) {
             Swal.fire({
                 icon: 'success',
-                title: 'Producto ingresado',
-                text: 'Ingreso exitoso',
+                title: 'Correcto',
+                text: 'Gracias por su compra',
             });
         } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Existen productos fuera de stock - Se han actualizado las existencias en el carrito al maximo de unidades'
+                text: 'Error en la compra'
             });
         }
+        Router.push("/");
         return result;
     } catch (error: any) {
         console.log(error)
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'El producto no pudo ser ingresado'
+            text: 'Error en la compra'
         });
         return null;
     }

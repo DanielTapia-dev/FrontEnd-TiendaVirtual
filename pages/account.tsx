@@ -18,14 +18,15 @@ export default function Account() {
 
     useEffect(() => {
         (async () => {
-            const response = await getMeApi(logout);
+            const response = await getMeApi();
             setUser(response || null);
         })()
     }, [auth]);
     const usuario: any = user;
+    console.log(usuario);
     let roleplay = "";
     if (usuario) {
-        roleplay = usuario.role;
+        roleplay = usuario.dbUser.role;
     }
 
     if (user === undefined) return null;
@@ -43,13 +44,15 @@ export default function Account() {
         <div>
             <Header />
             <div className="mt-10 mx-4">
-                {roleplay == "administrador" ? (<div className="align-middle w-full md:w-1/4 transition duration-300 transform hover:scale-105 cursor-pointer font-semibold p-2 text-sm md:text-base text-white bg-gray-600">
-                    <div onClick={abrirPanel} className="flex flex-row justify-center">
-                        <a>Panel de Administración</a>
-                        <span className="symbol ml-2">F</span>
-                    </div>
+                {
+                    roleplay == "administrador" ? (<div className="align-middle w-full md:w-1/4 transition duration-300 transform hover:scale-105 cursor-pointer font-semibold p-2 text-sm md:text-base text-white bg-gray-600">
+                        <div onClick={abrirPanel} className="flex flex-row justify-center">
+                            <a>Panel de Administración</a>
+                            <span className="symbol ml-2">F</span>
+                        </div>
 
-                </div>) : (<div></div>)}
+                    </div>) : (<div></div>)
+                }
             </div>
             <div className="flex flex-col md:flex-row w-full ">
                 <div className="flex flex-col  mt-7 mx-4 md:w-1/2">
@@ -96,10 +99,9 @@ export default function Account() {
     function Todos() {
         // cargando query mediante ReactQuery
         //const { data, error, isLoading } = useQuery('productos', fetcher);
-        console.log(usuario.dbUser._id);
         const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
             fetch(
-                `https://app-node-nextjs.herokuapp.com/api/historiales/${usuario.dbUser._id}`, {
+                `${process.env.KEY}/api/historiales/${usuario.dbUser._id}`, {
                 method: 'GET',
                 headers: {
                     token: token.token,

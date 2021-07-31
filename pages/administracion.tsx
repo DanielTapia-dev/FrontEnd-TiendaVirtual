@@ -17,7 +17,7 @@ export default function Administracion() {
 
     useEffect(() => {
         (async () => {
-            const response = await getMeApi(logout);
+            const response = await getMeApi();
             setUser(response || null);
         })()
     }, [auth]);
